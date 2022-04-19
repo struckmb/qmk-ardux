@@ -16,10 +16,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - layout: artsey_thepaintbrush
+          - layout: ardux_thepaintbrush
             hand: left
             size: std
-          - layout: artsey_thepaintbrush
+          - layout: ardux_thepaintbrush
             hand: right
             size: std
           - layout: faunchpad
@@ -125,37 +125,37 @@ jobs:
             else 
                 git clone https://github.com/qmk/qmk_firmware.git /qmk_firmware/; 
             fi
-            if [ ! -d /qmk_firmware/keyboards/artsey ];
+            if [ ! -d /qmk_firmware/keyboards/ardux ];
             then
-                ln -s "${GITHUB_WORKSPACE}/keyboards/artsey" /qmk_firmware/keyboards/artsey;
-                echo "Created keyboards/artsey symlink";
+                ln -s "${GITHUB_WORKSPACE}/keyboards/ardux" /qmk_firmware/keyboards/ardux;
+                echo "Created keyboards/ardux symlink";
             fi
             if [ ! -d /qmk_firmware/keyboards/faunchpad ];
             then
                 ln -s "${GITHUB_WORKSPACE}/keyboards/faunchpad" /qmk_firmware/keyboards/faunchpad;
                 echo "Created keyboards/faunchpad symlink";
             fi
-            if [ ! -d /qmk_firmware/users/artsey ];
+            if [ ! -d /qmk_firmware/users/ardux ];
             then
-                ln -s "${GITHUB_WORKSPACE}/users/artsey" /qmk_firmware/users/artsey;
-                echo "Created users/artsey symlink";
+                ln -s "${GITHUB_WORKSPACE}/users/ardux" /qmk_firmware/users/ardux;
+                echo "Created users/ardux symlink";
             fi
             qmk setup -y;
       - name: QMK Clean
         run: qmk clean
       - name: QMK Build
         run: |
-            cd /qmk_firmware/users/artsey
-            qmk compile -e ARTSEY_SIZE=${{ matrix.size }} -e ARTSEY_HAND=${{ matrix.hand }} layout/${{ matrix.layout }}.json
+            cd /qmk_firmware/users/ardux
+            qmk compile -e ARDUX_SIZE=${{ matrix.size }} -e ARDUX_HAND=${{ matrix.hand }} layout/${{ matrix.layout }}.json
       - name: Debug - ls build artifact folder
         run: ls /qmk_firmware/.build
       - name: Prep artifacts
-        run: cp /qmk_firmware/.build/${{ matrix.layout }}_artsey.hex /qmk_firmware/.build/artsey-${{ matrix.layout }}-${{ matrix.size }}-${{ matrix.hand }}.hex 
+        run: cp /qmk_firmware/.build/${{ matrix.layout }}_ardux.hex /qmk_firmware/.build/ardux-${{ matrix.layout }}-${{ matrix.size }}-${{ matrix.hand }}.hex 
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: "artsey-${{ matrix.layout }}-${{ matrix.size }}-${{ matrix.hand }}.hex"
-          path: "/qmk_firmware/.build/artsey-${{ matrix.layout }}-${{ matrix.size }}-${{ matrix.hand }}.hex"
+          name: "ardux-${{ matrix.layout }}-${{ matrix.size }}-${{ matrix.hand }}.hex"
+          path: "/qmk_firmware/.build/ardux-${{ matrix.layout }}-${{ matrix.size }}-${{ matrix.hand }}.hex"
           if-no-files-found: error
           retention-days: 14
   release:
@@ -170,7 +170,7 @@ jobs:
       - name: Generate release text
         id: release_text
         run: >
-          echo "::set-output name=release_text::$(echo '<b>Precompiled firmware files for ARTSEY</b><br><br>
+          echo "::set-output name=release_text::$(echo '<b>Precompiled firmware files for ARDUX</b><br><br>
           Download a firmware file by expanding "Assets", right clicking, and choosing "Save File As" or "Save Link As".
           <br>${{ github.event.inputs.releaseBody }}
           <br>Released on ${{ steps.date.outputs.date }}.
