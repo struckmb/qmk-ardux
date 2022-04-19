@@ -1,10 +1,10 @@
-# QMK ARTSEY Implementation
+# QMK ARDUX Implementation
 
-This repo contains the [QMK](https://qmk.fm/) ARTSEY implementation and pre-built firmware for boards that have been setup to use ARTSEY by the core ARTSEY development team.
+This repo contains the [QMK](https://qmk.fm/) ARDUX implementation and pre-built firmware for boards that have been setup to use ARDUX by the core ARDUX development team.
 
 ## Prebuilt Firmware
 
-The `Releases` area of this repository contains the latest builds of the QMK ARTSEY implementation. You can click on the most recent release and download the appropriate artifact for your MCU + board combination.
+The `Releases` area of this repository contains the latest builds of the QMK ARDUX implementation. You can click on the most recent release and download the appropriate artifact for your MCU + board combination.
 
 ### Firmware Files
 
@@ -18,7 +18,7 @@ If you are on Linux, you'll need to use the `qmk flash` command with the same op
 
 **We are NOT responsible for any failed firmware flashes!**
 
-## Adding ARTSEY support to an existing qmk board
+## Adding ARDUX support to an existing qmk board
 
 See [DEVELOPMENT.md](DEVELOPMENT.md)
 
@@ -30,7 +30,7 @@ See [REMIXING.md]
 
 A lot of this work wouldn't be possible with outside inspiration. In no particular order:
 
-- The ARTSEY community for their help ensuring our code is maximally accessible
+- The ARDUX community for their help ensuring our code is maximally accessible
 - [filterpaper's QMK userspace](https://github.com/filterpaper/qmk_userspace)
 - [sungo's QMK userspace](https://git.sr.ht/~sungo/qmk_userspace)
 
