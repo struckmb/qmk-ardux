@@ -1,7 +1,7 @@
 {
     "keyboard_name": "The Paintbrush",
-    "url": "https://github.com/artseyio/qmk-artsey/",
-    "maintainer": "artsey",
+    "url": "https://github.com/arduxio/qmk-artsey",
+    "maintainer": "ardux",
     "layouts": {
         "LAYOUT": {
             "layout": [

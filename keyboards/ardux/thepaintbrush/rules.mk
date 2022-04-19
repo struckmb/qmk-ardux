@@ -15,18 +15,18 @@ LTO_ENABLE = no # We support arm qmk devices which are incompatabl with this avr
 #     This *should* live in config.h but KemoNine can't figure out how to check which keymap is in use at that level
 PINS_HAND_LEFT = -DDIRECT_PINS="{ { F7, F6, F5, F4 }, { B6, B2, B3, B1 } }"
 PINS_HAND_RIGHT = -DDIRECT_PINS="{ { F4, F5, F6, F7 }, { B1, B3, B2, B6 } }"
-ifeq ($(KEYBOARD), artsey/thepaintbrush)
+ifeq ($(KEYBOARD), ardux/thepaintbrush)
 	ifeq ($(KEYMAP), left)
 		OPT_DEFS += $(PINS_HAND_LEFT)
 	endif
-	ifeq ($(strip $(ARTSEY_HAND)), left)
+	ifeq ($(strip $(ARDUX_HAND)), left)
 	   OPT_DEFS += $(PINS_HAND_LEFT)
 	endif
 
 	ifeq ($(KEYMAP), right)
 		OPT_DEFS += $(PINS_HAND_RIGHT)
 	endif
-	ifeq ($(strip $(ARTSEY_HAND)), right)
+	ifeq ($(strip $(ARDUX_HAND)), right)
 	   OPT_DEFS += $(PINS_HAND_RIGHT)
 	endif
 endif
