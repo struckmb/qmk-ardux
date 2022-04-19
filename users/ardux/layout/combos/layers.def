@@ -15,7 +15,7 @@ COMB(combo_layer_navbase,            TG(LAYER_ID_NAVIGATION),       KNAV_B1, KNA
 COMB(combo_layer_basemse,            TG(LAYER_ID_MOUSE),            KEY_T1,  KEY_B2,  KEY_T3)
 COMB(combo_layer_msebase,            TG(LAYER_ID_MOUSE),            KMSE_T1, KMSE_B2, KMSE_T3)
 
-#ifndef ARTSEY_SIZE_STD
+#ifndef ARDUX_SIZE_STD
 COMB(combo_layer_basefun,            TG(LAYER_ID_BIG_FUN),          OSM_SHIFT, KC_TAB)
 COMB(combo_layer_funbase,            TG(LAYER_ID_BIG_FUN),          FUN_1, FUN_2)
 #endif
