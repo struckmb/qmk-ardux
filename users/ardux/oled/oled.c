@@ -4,7 +4,7 @@
 #include QMK_KEYBOARD_H
 
 // //////////
-// ARTSEY layer ids (needed everywhere)
+// ARDUX layer ids (needed everywhere)
 #include "../layout/layer_ids.h"
 
 #include "oled.h"
@@ -14,32 +14,32 @@ uint32_t boot_logo_timer = 0;
 bool boot_logo_cleared = false;
 
 static void render_icon(void) {
-    oled_write_raw_P(ARTSEY_OLED_ICON, sizeof(ARTSEY_OLED_ICON));
+    oled_write_raw_P(ARDUX_OLED_ICON, sizeof(ARDUX_OLED_ICON));
 }
 
-#ifdef ARTSEY_BOOT_LOGO
+#ifdef ARDUX_BOOT_LOGO
 static void render_logo(void) {
     oled_write_raw_P(boot_abullet, sizeof(boot_abullet));
 }
 #endif
 
 static void render_status(void) {
-#ifdef ARTSEY_OLED_ICON
+#ifdef ARDUX_OLED_ICON
     oled_set_cursor(0, 5);
 #else
     oled_set_cursor(0, 1);
 #endif
     switch (get_highest_layer(layer_state)) {
         case LAYER_ID_BASE:
-#ifdef ARTSEY_SIZE_STD
+#ifdef ARDUX_SIZE_STD
             oled_write_P(PSTR(" ART "), false);
             oled_write_P(PSTR(" SEY "), false);
 #endif
-#ifdef ARTSEY_SIZE_BIG
+#ifdef ARDUX_SIZE_BIG
             oled_write_P(PSTR("*ART "), false);
             oled_write_P(PSTR(" SEY*"), false);
 #endif
-#ifdef ARTSEY_SIZE_40P
+#ifdef ARDUX_SIZE_40P
             oled_write_P(PSTR("*ART*"), false);
             oled_write_P(PSTR("*SEY*"), false);
 #endif
@@ -68,7 +68,7 @@ static void render_status(void) {
             oled_write_P(PSTR(" Cus "), false);
             oled_write_P(PSTR(" tom "), false);
             break;
-#ifdef ARTSEY_SIZE_BIG
+#ifdef ARDUX_SIZE_BIG
         case LAYER_ID_BIG_SYM:
             oled_write_P(PSTR("*Sym "), false);
             oled_write_P(PSTR(" bol*"), false);
@@ -78,7 +78,7 @@ static void render_status(void) {
             oled_write_P(PSTR("  ct*"), false);
             break;
 #endif
-#ifdef ARTSEY_SIZE_40P
+#ifdef ARDUX_SIZE_40P
         case LAYER_ID_BIG_SYM:
             oled_write_P(PSTR("*Sym*"), false);
             oled_write_P(PSTR("*bol*"), false);
@@ -124,11 +124,11 @@ bool oled_task_user(void) {
         return false;
     }
 
-#ifdef ARTSEY_BOOT_LOGO
+#ifdef ARDUX_BOOT_LOGO
     if (boot_logo_timer == 0) {
         boot_logo_timer = timer_read32();
     }
-    if (timer_elapsed32(boot_logo_timer) < ARTSEY_BOOT_LOGO_TIMEOUT) {
+    if (timer_elapsed32(boot_logo_timer) < ARDUX_BOOT_LOGO_TIMEOUT) {
         render_logo();
     }
     else {
@@ -144,7 +144,7 @@ bool oled_task_user(void) {
     render_icon();
     render_status();
     oled_render();
-#ifdef ARTSEY_BOOT_LOGO
+#ifdef ARDUX_BOOT_LOGO
     }
 #endif
     return false;
