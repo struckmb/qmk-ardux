@@ -11,10 +11,10 @@ void dance_slsh_bk_fw_finished(qk_tap_dance_state_t *state, void *user_data);
 void dance_slsh_bk_fw_reset(qk_tap_dance_state_t *state, void *user_data);
 void dance_at_equal_finished(qk_tap_dance_state_t *state, void *user_data);
 void dance_at_equal_reset(qk_tap_dance_state_t *state, void *user_data);
-void dance_artsey_left_finished(qk_tap_dance_state_t *state, void *user_data);
-void dance_artsey_left_reset(qk_tap_dance_state_t *state, void *user_data);
-void dance_artsey_right_finished(qk_tap_dance_state_t *state, void *user_data);
-void dance_artsey_right_reset(qk_tap_dance_state_t *state, void *user_data);
+void dance_ardux_left_finished(qk_tap_dance_state_t *state, void *user_data);
+void dance_ardux_left_reset(qk_tap_dance_state_t *state, void *user_data);
+void dance_ardux_right_finished(qk_tap_dance_state_t *state, void *user_data);
+void dance_ardux_right_reset(qk_tap_dance_state_t *state, void *user_data);
 void dance_40p_finished(qk_tap_dance_state_t *state, void *user_data);
 void dance_40p_reset(qk_tap_dance_state_t *state, void *user_data);
 
@@ -23,8 +23,8 @@ static uint8_t td_state;
 qk_tap_dance_action_t tap_dance_actions[] = {
     [TD_SLSH_BK_FW] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_slsh_bk_fw_finished, dance_slsh_bk_fw_reset),
     [TD_AT_EQUAL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_at_equal_finished, dance_at_equal_reset),
-    [TD_ARTSEY_LEFT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_artsey_left_finished, dance_artsey_left_reset),
-    [TD_ARTSEY_RIGHT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_artsey_right_finished, dance_artsey_right_reset),
+    [TD_ARDUX_LEFT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_ardux_left_finished, dance_ardux_left_reset),
+    [TD_ARDUX_RIGHT] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_ardux_right_finished, dance_ardux_right_reset),
     [TD_40P] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_40p_finished, dance_40p_reset),
 };
 
@@ -125,7 +125,7 @@ void dance_at_equal_reset(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_artsey_left_finished(qk_tap_dance_state_t *state, void *user_data) {
+void dance_ardux_left_finished(qk_tap_dance_state_t *state, void *user_data) {
     td_state = dance_current(state);
     switch (td_state) {
         case TD_SINGLE_TAP:
@@ -145,7 +145,7 @@ void dance_artsey_left_finished(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_artsey_left_reset(qk_tap_dance_state_t *state, void *user_data) {
+void dance_ardux_left_reset(qk_tap_dance_state_t *state, void *user_data) {
     td_state = dance_current(state);
     switch (td_state) {
         case TD_SINGLE_TAP:
@@ -159,7 +159,7 @@ void dance_artsey_left_reset(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_artsey_right_finished(qk_tap_dance_state_t *state, void *user_data) {
+void dance_ardux_right_finished(qk_tap_dance_state_t *state, void *user_data) {
     td_state = dance_current(state);
     switch (td_state) {
         case TD_SINGLE_TAP:
@@ -179,7 +179,7 @@ void dance_artsey_right_finished(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_artsey_right_reset(qk_tap_dance_state_t *state, void *user_data) {
+void dance_ardux_right_reset(qk_tap_dance_state_t *state, void *user_data) {
     td_state = dance_current(state);
     switch (td_state) {
         case TD_SINGLE_TAP:

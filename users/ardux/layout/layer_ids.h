@@ -2,8 +2,8 @@
 
 #define LAYER_ID_GLOBAL -1
 
-#ifdef ARTSEY_SIZE_40P
-// 40% ARTSEY layer IDs
+#ifdef ARDUX_SIZE_40P
+// 40% ARDUX layer IDs
 #define LAYER_ID_BASE 0
 #define LAYER_ID_40P_BASE 1
 #define LAYER_ID_40P_FUNCTION 2
@@ -17,7 +17,7 @@
 #define LAYER_ID_BIG_SYM 10
 #define LAYER_ID_BIG_FUN 11
 #else
-// Standard and Big ARTSEY layer IDs
+// Standard and Big ARDUX layer IDs
 #define LAYER_ID_BASE 0
 #define LAYER_ID_NUMBERS 1
 #define LAYER_ID_SYMBOLS 2
