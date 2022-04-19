@@ -3,7 +3,7 @@
 
 #include QMK_KEYBOARD_H
 #include "g/keymap_combo.h"
-#include "artsey.h"
+#include "ardux.h"
 
 #ifdef POINTING_DEVICE_ENABLE
 #include "layout/pimoroni.h"
