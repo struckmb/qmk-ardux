@@ -10,8 +10,8 @@
 // //////////
 // Standard Definitions
 #else
-#ifdef ARTSEY_HAND_LEFT
-#ifdef ARTSEY_SIZE_40P
+#ifdef ARDUX_HAND_LEFT
+#ifdef ARDUX_SIZE_40P
 #define F0P_LEADING_NONES
 #define F0P_ROW_ONE_MID_NONES
 #define F0P_BETWEEN_ROW_ONE_TWO_NONES
@@ -29,8 +29,8 @@
 #define BIG_TRAILING_NONES , KC_NO, KC_NO, KC_NO
 #endif
 
-#ifdef ARTSEY_HAND_RIGHT
-#ifdef ARTSEY_SIZE_40P
+#ifdef ARDUX_HAND_RIGHT
+#ifdef ARDUX_SIZE_40P
 #define F0P_LEADING_NONES
 #define F0P_ROW_ONE_MID_NONES
 #define F0P_BETWEEN_ROW_ONE_TWO_NONES
