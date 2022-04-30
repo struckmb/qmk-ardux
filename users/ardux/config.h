@@ -44,6 +44,15 @@
 #endif
 #endif
 
+// /////////
+// Remove Layer count restrictions
+#ifdef LAYER_STATE_8BIT
+#undef LAYER_STATE_8BIT
+#endif
+#ifdef MAX_LAYER
+#undef MAX_LAYER
+#endif
+
 // //////////
 // Most of ardux, the WHOLE layout, start here for remixes - this is critical!
 #include "layout/_layout.h"
