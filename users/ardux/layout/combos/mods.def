@@ -1,12 +1,6 @@
 // Copyright (c) 2021 Mike "KemoNine" Crosson
 // SPDX-License-Identifier: Apache-2.0
 
-// /////////
-// User remixes / tweaks -- these take precidence above all else
-#if __has_include("../remixes/combos/mods.def")
-#include "../remixes/combos/mods.def"
-#endif
-
 #ifndef DISABLE_DEFAULT_MOD_COMBOS
 
 //   NAME                            RESULT                         TRIGGER
@@ -51,3 +45,9 @@ COMB(combo_caps_lock_base_40p,       KC_CAPS,                       RIGHT_CUSTOM
 #endif // ARDUX_SIZE_40P
 
 #endif // DISABLE_DEFAULT_MOD_COMBOS
+
+// /////////
+// User remixes / tweaks -- these take precidence above all else
+#if __has_include("../remixes/combos/mods.def")
+#include "../remixes/combos/mods.def"
+#endif

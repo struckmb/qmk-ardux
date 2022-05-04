@@ -1,11 +1,6 @@
 // Copyright (c) 2021 Mike "KemoNine" Crosson
 // SPDX-License-Identifier: Apache-2.0
 
-// /////////
-// User remixes / tweaks -- these take precidence above all else
-#if __has_include("../remixes/combos/control.def")
-#include "../remixes/combos/control.def"
-#endif
 
 #ifndef DISABLE_DEFAULT_CONTROL_COMBOS
 
@@ -47,3 +42,10 @@ COMB(combo_space_base_40p,           KC_SPACE,                      RIGHT_SYMBOL
 #endif // ARDUX_SIZE_40P
 
 #endif // DISABLE_DEFAULT_CONTROL_COMBOS
+
+
+// /////////
+// User remixes / tweaks -- these take precidence above all else
+#if __has_include("../remixes/combos/control.def")
+#include "../remixes/combos/control.def"
+#endif
