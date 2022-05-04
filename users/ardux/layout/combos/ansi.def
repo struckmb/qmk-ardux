@@ -1,12 +1,6 @@
 // Copyright (c) 2021 Mike "KemoNine" Crosson
 // SPDX-License-Identifier: Apache-2.0
 
-// /////////
-// User remixes / tweaks -- these take precidence above all else
-#if __has_include("../remixes/combos/ansi.def")
-#include "../remixes/combos/ansi.def"
-#endif
-
 #ifndef DISABLE_DEFAULT_ANSI_COMBOS
 
 #ifndef DISABLE_DEFAULT_ALPHA_COMBOS
@@ -39,3 +33,10 @@ COMB(combo_zero,                     KC_0,                                   KNU
 #endif // DISABLE_DEFAULT_NUMBER_COMBOS
 
 #endif // DISABLE_DEFAULT_ANSI_COMBOS
+
+
+// /////////
+// User remixes / tweaks -- these take precidence above all else
+#if __has_include("../remixes/combos/ansi.def")
+#include "../remixes/combos/ansi.def"
+#endif
