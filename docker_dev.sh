@@ -1,5 +1,6 @@
 #!/bin/bash
-docker run -it --rm \
+docker run -it \
+	--name qmk-ardux-dev \
 	--network host \
 	--privileged \
 	-v /dev:/dev \
@@ -8,5 +9,5 @@ docker run -it --rm \
 	-v ./keyboards/ardux:/qmk_firmware/keyboards/ardux \
 	-v ./keyboards/faunchpad:/qmk_firmware/keyboards/faunchpad \
 	-v ./users/ardux:/qmk_firmware/users/ardux \
-	qmkfm/qmk_cli:latest \
+	qmk-ardux:latest \
 	/bin/bash
