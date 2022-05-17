@@ -159,6 +159,14 @@ rm -rf ../../.build/* && qmk -v compile \
 
 ```
 
+## Flashing on Linux
+
+You can use a command similar (double check the device node) to the following for avr+dfu setups. You'll need to run 'qmk -v flash' to find what flash commands it's running to avoid having to build in the future.
+
+```
+avrdude -pm32u4 -cavr109 -D -P/dev/ttyACM0 -b57600 -Uflash:w:ardux-ardux_thepaintbrush-std-left.hex
+```
+
 ## Remixing
 
 Start with `layouts/_layout.h` and follow the code from there.
