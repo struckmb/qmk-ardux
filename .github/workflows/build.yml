@@ -41,7 +41,7 @@ jobs:
             size: std
             fwext: hex
           - layout: geekboards_macropad_v2
-            hand: bin
+            hand: left
             size: std
             fwext: bin
           - layout: geekboards_macropad_v2
