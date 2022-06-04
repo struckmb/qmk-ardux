@@ -19,93 +19,123 @@ jobs:
           - layout: ardux_thepaintbrush
             hand: left
             size: std
+            fwext: hex
           - layout: ardux_thepaintbrush
             hand: right
             size: std
+            fwext: hex
           - layout: faunchpad
             hand: left
             size: std
+            fwext: hex
           - layout: faunchpad
             hand: right
             size: std
+            fwext: hex
           - layout: ai03_soyuz
             hand: left
             size: std
+            fwext: hex
           - layout: ai03_soyuz
             hand: right
             size: std
+            fwext: bin
           - layout: geekboards_macropad_v2
-            hand: left
+            hand: bin
             size: std
+            fwext: hex
           - layout: geekboards_macropad_v2
             hand: right
             size: std
+            fwext: hex
           - layout: crkbd_rev1
             hand: left
             size: big
+            fwext: hex
           - layout: crkbd_rev1
             hand: right
             size: big
+            fwext: hex
           - layout: gboards_gergo
             hand: left
             size: big
+            fwext: hex
           - layout: gboards_gergo
             hand: right
             size: big
+            fwext: hex
           - layout: ferris_sweep
             hand: left
             size: big
+            fwext: hex
           - layout: ferris_sweep
             hand: right
             size: big
+            fwext: hex
           - layout: draculad
             hand: left
             size: big
+            fwext: hex
           - layout: draculad
             hand: right
             size: big
+            fwext: hex
           - layout: boardsource_microdox
             hand: left
             size: big
+            fwext: hex
           - layout: boardsource_microdox
             hand: right
             size: big
+            fwext: hex
           - layout: splitkb_kyria_rev2
             hand: right
             size: big
+            fwext: hex
           - layout: splitkb_kyria_rev2
             hand: left
             size: big
+            fwext: hex
           - layout: crkbd_rev1
             hand: left
             size: 40p
+            fwext: hex
           - layout: crkbd_rev1
             hand: right
             size: 40p
+            fwext: hex
           - layout: ferris_sweep
             hand: left
             size: 40p
+            fwext: hex
           - layout: ferris_sweep
             hand: right
             size: 40p
+            fwext: hex
           - layout: draculad
             hand: left
             size: 40p
+            fwext: hex
           - layout: draculad
             hand: right
             size: 40p
+            fwext: hex
           - layout: boardsource_microdox
             hand: left
             size: 40p
+            fwext: hex
           - layout: boardsource_microdox
             hand: right
             size: 40p
+            fwext: hex
           - layout: splitkb_kyria_rev2
             hand: right
             size: 40p
+            fwext: hex
           - layout: splitkb_kyria_rev2
             hand: left
             size: 40p
+            fwext: hex
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -150,12 +180,12 @@ jobs:
       - name: Debug - ls build artifact folder
         run: ls /qmk_firmware/.build
       - name: Prep artifacts
-        run: cp /qmk_firmware/.build/${{ matrix.layout }}_ardux.hex /qmk_firmware/.build/ardux-${{ matrix.layout }}-${{ matrix.size }}-${{ matrix.hand }}.hex 
+        run: cp /qmk_firmware/.build/${{ matrix.layout }}_ardux.${{ matrix.fwext }} /qmk_firmware/.build/ardux-${{ matrix.layout }}-${{ matrix.size }}-${{ matrix.hand }}.${{ matrix.fwext }} 
       - name: Archive artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: "ardux-${{ matrix.layout }}-${{ matrix.size }}-${{ matrix.hand }}.hex"
-          path: "/qmk_firmware/.build/ardux-${{ matrix.layout }}-${{ matrix.size }}-${{ matrix.hand }}.hex"
+          name: "ardux-${{ matrix.layout }}-${{ matrix.size }}-${{ matrix.hand }}.${{ matrix.fwext }}"
+          path: "/qmk_firmware/.build/ardux-${{ matrix.layout }}-${{ matrix.size }}-${{ matrix.hand }}.${{ matrix.fwext }}"
           if-no-files-found: error
           retention-days: 14
   release:
@@ -185,13 +215,16 @@ jobs:
       - name: Create hex files directory for individual board assets
         if: always()
         run: mkdir hexs
+      - name: Create bin files directory for individual board assets
+        if: always()
+        run: mkdir bins
       - name: cp all firmware files for release to one output dir
         if: always()
-        run: cd release && for folder in ./*; do echo $folder; cp ${folder}/*.hex ../hexs/; done && cd ..
+        run: cd release && for folder in ./*; do echo $folder; cp ${folder}/*.hex ../hexs/; cp ${folder}/*.bin ../bins/; done && cd ..
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "hexs/*"
+          artifacts: "hexs/*,bins/*"
           allowUpdates: false
           artifactErrorsFailBuild: true
           commit: main
