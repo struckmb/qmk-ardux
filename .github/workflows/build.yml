@@ -39,15 +39,15 @@ jobs:
           - layout: ai03_soyuz
             hand: right
             size: std
-            fwext: bin
+            fwext: hex
           - layout: geekboards_macropad_v2
             hand: bin
             size: std
-            fwext: hex
+            fwext: bin
           - layout: geekboards_macropad_v2
             hand: right
             size: std
-            fwext: hex
+            fwext: bin
           - layout: crkbd_rev1
             hand: left
             size: big
