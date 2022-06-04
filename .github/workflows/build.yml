@@ -212,19 +212,16 @@ jobs:
       - name: List files to include in release
         if: always()
         run: ls -R release/
-      - name: Create hex files directory for individual board assets
+      - name: Create firmware files directory for individual board assets
         if: always()
-        run: mkdir hexs
-      - name: Create bin files directory for individual board assets
-        if: always()
-        run: mkdir bins
+        run: mkdir fwfiles
       - name: cp all firmware files for release to one output dir
         if: always()
-        run: cd release && for folder in ./*; do echo $folder; cp ${folder}/*.hex ../hexs/; cp ${folder}/*.bin ../bins/; done && cd ..
+        run: cd release && for folder in ./*; do echo $folder; cp ${folder}/*.* ../fwfiles/; done && cd ..
       - name: Create release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "hexs/*,bins/*"
+          artifacts: "fwfiles/*"
           allowUpdates: false
           artifactErrorsFailBuild: true
           commit: main
