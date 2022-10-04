@@ -13,7 +13,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_ARTS_NUM] = LAYOUT_wrapper( _AN1_4_, _AN2_4_),
     [_ARTS_SYM] = LAYOUT_wrapper( _AS1_4_, _AS2_4_),
     [_ARTS_PAR] = LAYOUT_wrapper( _AP1_4_, _AP2_4_),
-    [_ARTS_ARR] = LAYOUT_wrapper( _AA1_4_, _AA2_4_),
+    [_ARTS_NAV] = LAYOUT_wrapper( _AA1_4_, _AA2_4_),
     [_ARTS_MSE] = LAYOUT_wrapper( _AM1_4_, _AM2_4_
             ),
 #   endif // ARTSENIO_ENABLE
@@ -57,41 +57,54 @@ static void render_status(void) {
 #   else
     oled_set_cursor(0, 1);
 #   endif // ARDUX_OLED_ICON
-    oled_write(" ART\n SEY\n\n", false);
+    oled_write(" ARTS", false);
+    oled_write(" ENIO", false);
+    oled_write("\n\n", false);
     switch (get_highest_layer(layer_state)) {
         case _ARTSENIO:
-            oled_write_P(PSTR("     "), false);
-            oled_write_P(PSTR("     "), false);
+            oled_write("     ", false);
+            oled_write("     ", false);
             break;
         case _ARTS_NUM:
-            oled_write_P(PSTR(" Num "), false);
-            oled_write_P(PSTR(" ber "), false);
+            oled_write(" Num ", false);
+            oled_write(" ber ", false);
             break;
         case _ARTS_SYM:
-            oled_write_P(PSTR(" Sym "), false);
-            oled_write_P(PSTR(" bol "), false);
+            oled_write(" Sym ", false);
+            oled_write(" bol ", false);
             break;
         case _ARTS_PAR:
-            oled_write_P(PSTR(" Par "), false);
-            oled_write_P(PSTR(" ens "), false);
+            oled_write(" Par ", false);
+            oled_write(" ens ", false);
             break;
-        case _ARTS_ARR:
-            oled_write_P(PSTR(" Nav "), false);
-            oled_write_P(PSTR("     "), false);
+        case _ARTS_NAV:
+            oled_write(" Nav ", false);
+            oled_write("     ", false);
             break;
         case _ARTS_MSE:
-            oled_write_P(PSTR(" Mou "), false);
-            oled_write_P(PSTR("  se "), false);
+            oled_write(" Mou ", false);
+            oled_write("  se ", false);
             break;
         /* case LAYER_ID_CUSTOM: */
-        /*     oled_write_P(PSTR(" Cus "), false); */
-        /*     oled_write_P(PSTR(" tom "), false); */
+        /*     oled_write(" Cus ", false); */
+        /*     oled_write(" tom ", false); */
         /*     break; */
         default:
-            oled_write_P(PSTR(" ??? "), false);
-            oled_write_P(PSTR(" ??? "), false);
+            oled_write(" ??? ", false);
+            oled_write(" ??? ", false);
             break;
     }
+    // Write the modifier state
+    uint8_t osms = get_oneshot_mods();
+    uint8_t mods = get_mods() | osms;
+    oled_write("\n\n", false);
+    oled_write((mods & MOD_MASK_SHIFT  ) ? "S" : " ", (osms & MOD_MASK_SHIFT  ));
+    oled_write((mods & MOD_MASK_CTRL   ) ? "C" : " ", (osms & MOD_MASK_CTRL   ));
+    oled_write((mods & MOD_BIT(KC_RALT)) ? "R" : " ", (osms & MOD_BIT(KC_RALT)));
+    oled_write((mods & MOD_MASK_ALT    ) ? "A" : " ", (osms & MOD_MASK_ALT    ));
+    oled_write((mods & MOD_MASK_GUI    ) ? "M" : " ", (osms & MOD_MASK_GUI    ));
+    bool capsLock = host_keyboard_led_state().caps_lock || is_caps_word_on();
+    oled_write(capsLock ? "CAPSL" : "     ", capsLock);
 }
 
 bool oled_task_keymap(void) {
