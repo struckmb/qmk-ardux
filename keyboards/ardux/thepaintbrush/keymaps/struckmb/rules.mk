@@ -1,9 +1,5 @@
 BOOTLOADER = caterina
 
-ARDUX_BOOT_LOGO_TIMEOUT = 2000
-
-# USER_NAME := ardux
-# ARDUX_HAND = left
 PINS_HAND_LEFT = -DDIRECT_PINS="{ { F7, F6, F5, F4 }, { B6, B2, B3, B1 } }"
 OPT_DEFS += $(PINS_HAND_LEFT)
 
