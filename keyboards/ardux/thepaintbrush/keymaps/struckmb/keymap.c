@@ -81,7 +81,7 @@ static void render_status(void) {
             break;
         case _ARTS_NUM:
             oled_write(" Num ", false);
-            oled_write(" ber ", false);
+            oled_write(" /Fn ", false);
             break;
         case _ARTS_SYM:
             oled_write(" Sym ", false);

@@ -3,7 +3,7 @@ BOOTLOADER = caterina
 PINS_HAND_LEFT = -DDIRECT_PINS="{ { F7, F6, F5, F4 }, { B6, B2, B3, B1 } }"
 OPT_DEFS += $(PINS_HAND_LEFT)
 
-# Paintbrush hardware
+# Hardware settings
 ifneq (,$(findstring ardux/thepaintbrush,$(KEYBOARD)))
     # Elective features
     COMBO_ENABLE = yes
