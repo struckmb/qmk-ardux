@@ -81,13 +81,11 @@ static void render_status(void) {
         case _ARTS_NUM:
             oled_write(" Num ", false);
             oled_write(" /Fn ", false);
-            oled_write("     ", false);
-            oled_write("N1248", false);
-            oled_write("F1248", false);
-            oled_write("     ", false);
+            for (int i=0; i<2; i++) oled_write("     ", false);
             oled_write("8|421", false);
             oled_write("F | N", false);
             oled_write("421|8", false);
+            for (int i=0; i<2; i++) oled_write("     ", false);
             break;
         case _ARTS_SYM:
             oled_write(" Sym ", false);
@@ -113,12 +111,21 @@ static void render_status(void) {
             break;
         case _ARTS_NAV:
             oled_write(" Nav ", false);
-            for (int i=0; i<8; i++) oled_write("     ", false);
+            for (int i=0; i<3; i++) oled_write("     ", false);
+            oled_write("^ <T>", false);
+            oled_write("| H^E", false);
+            oled_write("v <v>", false);
+            for (int i=0; i<2; i++) oled_write("     ", false);
             break;
         case _ARTS_MSE:
             oled_write(" Mou ", false);
             oled_write("  se ", false);
-            for (int i=0; i<7; i++) oled_write("     ", false);
+            oled_write("     ", false);
+            oled_write("   3 ", false);
+            oled_write("^ 4 5", false);
+            oled_write("| 2^1", false);
+            oled_write("v <v>", false);
+            for (int i=0; i<2; i++) oled_write("     ", false);
             break;
         /* case LAYER_ID_CUSTOM: */
         /*     oled_write(" Cus ", false); */
