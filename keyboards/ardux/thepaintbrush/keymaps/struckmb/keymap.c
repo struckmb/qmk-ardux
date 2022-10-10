@@ -45,16 +45,15 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
     return OLED_ROTATION_270;
 }
 
-static const char PROGMEM icon_badslime_1[] = {
+#ifdef ARDUX_OLED_ICON
+static const char PROGMEM icon_logo[] = {
     0,  0,128,240,248, 28, 12, 12, 28,252,252, 12, 12, 28,248,240, 56, 28, 12,252,252, 12,236,252, 28, 12, 12, 12, 28,120,112,  0,
     0,240,255, 63, 12, 12, 12, 12, 12,255,255,  6, 14, 31,123,241,192,  0,  0,255,255,  0,241,243,199,134,134,134,206,252,248,  0,
     0,241,249,156,140,140,140, 12,252,253,121,224,128,  0,240,249, 29, 12,252,253, 13, 12, 12,253,253, 29, 13, 13, 29,249,240,  0,
     0,127,127, 97, 97, 97, 97, 96,127,127,  0,  1,  7, 30,127,127, 96, 96,127,127, 96, 96,  0, 31, 63,112, 96, 96,112, 63, 31,  0,
 };
-
-#ifdef ARDUX_OLED_ICON
 static void render_icon(void) {
-    oled_write_raw_P(icon_badslime_1, sizeof(icon_badslime_1));
+    oled_write_raw_P(icon_logo, sizeof(icon_logo));
 }
 #endif // ARDUX_OLED_ICON
 
